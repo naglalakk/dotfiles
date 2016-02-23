@@ -5,10 +5,6 @@ set shiftwidth=4
 set softtabstop=4
 syntax on
 
-" Color
-" ---------------------
-set background=dark
-colorscheme solarized
 
 " Plugins
 " --------------------------------------
@@ -34,11 +30,18 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'mattn/webapi-vim'
+Bundle 'mattn/gist-vim'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Color
+" ---------------------
+set background=dark
+colorscheme solarized
 
 " Keybindings
 " -------------------------------------
