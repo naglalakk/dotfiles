@@ -3,6 +3,8 @@ set expandtab
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
+set number
+set backspace=indent,eol,start
 syntax on
 
 
@@ -20,14 +22,23 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
-
 " Track the engine.
 Plugin 'SirVer/ultisnips'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
+
+" Golang
+Plugin 'fatih/vim-go'
+
+" Javascript
+Plugin 'pangloss/vim-javascript'
+
+" Fucking CoffeeScript
+Plugin 'kchmck/vim-coffee-script'
+
+" Better Whitespace
+Plugin 'ntpeters/vim-better-whitespace'
 
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'mattn/webapi-vim'
@@ -43,12 +54,15 @@ filetype plugin indent on    " required
 set background=dark
 colorscheme solarized
 
+set list
+set listchars=tab:>-
+
 " Keybindings
 " -------------------------------------
 " Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+"let g:UltiSnipsExpandTrigger="<tab>"
+"let g:UltiSnipsJumpForwardTrigger="<c-b>"
+"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
 " If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
+"let g:UltiSnipsEditSplit="vertical"
