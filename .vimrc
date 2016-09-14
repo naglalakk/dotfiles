@@ -22,9 +22,6 @@ call vundle#begin()
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
-" Track the engine.
-Plugin 'SirVer/ultisnips'
-
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
 
@@ -40,7 +37,13 @@ Plugin 'kchmck/vim-coffee-script'
 " Better Whitespace
 Plugin 'ntpeters/vim-better-whitespace'
 
+"Latex
+Plugin 'lervag/vimtex'
+
+" Solarized colorscheme
 Bundle 'altercation/vim-colors-solarized'
+
+
 Bundle 'mattn/webapi-vim'
 Bundle 'mattn/gist-vim'
 
