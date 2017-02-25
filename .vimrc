@@ -1,16 +1,24 @@
-set expandtab
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
-set number
-set backspace=indent,eol,start
-syntax on
-
-
 " Plugins
 " --------------------------------------
+set number
+set backspace=indent,eol,start
 set nocompatible " be iMproved, required
 filetype off     " required
+
+" use 4 spaces for tabs
+set tabstop=4 softtabstop=4 shiftwidth=4
+
+" display indentation guides
+set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
+
+" convert spaces to tabs when reading file
+autocmd! bufreadpost * set noexpandtab | retab! 4
+
+" convert tabs to spaces before writing file
+autocmd! bufwritepre * set expandtab | retab! 4
+
+" convert spaces to tabs after writing file (to show guides again)
+autocmd! bufwritepost * set noexpandtab | retab! 4
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -20,6 +28,9 @@ call vundle#begin()
 
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
+
+" Nerdtree file browser
+Plugin 'scrooloose/nerdtree'
 
 " Snippets are separated from the engine. Add this if you want them:
 Plugin 'honza/vim-snippets'
@@ -40,13 +51,16 @@ Plugin 'fatih/vim-go'
 Plugin 'tpope/vim-rails'
 
 " Javascript
-Plugin 'pangloss/vim-javascript'
+Plugin 'othree/yajs.vim'
 
 " jsdoc
 Plugin 'heavenshell/vim-jsdoc'
 
 " Fucking CoffeeScript
 Plugin 'kchmck/vim-coffee-script'
+
+" Stylus
+Plugin 'wavded/vim-stylus'
 
 " Better Whitespace
 Plugin 'ntpeters/vim-better-whitespace'
@@ -58,42 +72,45 @@ Plugin 'junegunn/vim-easy-align'
 Plugin 'lervag/vimtex'
 
 "Jade
-Plugin 'digitaltoad/vim-pug'
-Plugin 'dNitro/vim-pug-complete'
+Plugin 'statianzo/vim-jade'
+
+" Neocomplete
+Plugin 'shougo/neocomplete.vim'
+
+" Github
+" - gists
+Plugin 'mattn/gist-vim'
+
+" Markdown
+Plugin 'godlygeek/tabular'
+Plugin 'plasticboy/vim-markdown'
+
+" Vim airline: status bar
+Plugin 'bling/vim-airline'
+
+Plugin 'stephpy/vim-yaml'
 
 " Solarized colorscheme
 Bundle 'altercation/vim-colors-solarized'
 
 Bundle 'mattn/webapi-vim'
-Bundle 'mattn/gist-vim'
 
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype on
+set backspace=indent,eol,start
+syntax   on
 filetype plugin indent on    " required
 filetype indent on
 
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " Color
 " ---------------------
 set background=dark
 colorscheme solarized
 
-" Keybindings
-" -------------------------------------
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-"let g:UltiSnipsExpandTrigger="<tab>"
-"let g:UltiSnipsJumpForwardTrigger="<c-b>"
-"let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-"let g:UltiSnipsEditSplit="vertical"
+let g:NERDTreeMapActivateNode = ''
+let g:NERDTreeMapOpenInTab = 'o'
+map <C-n> :NERDTreeToggle<CR>

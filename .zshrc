@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git, pyenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -95,12 +95,13 @@ export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
 
+# Ruby: rvm
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 source /Users/Donna/.rvm/scripts/rvm
 
+# Node: nvm
 export NVM_DIR="/Users/Donna/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-export PYENV_ROOT=/usr/local/var/pyenv
+# Python: pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
