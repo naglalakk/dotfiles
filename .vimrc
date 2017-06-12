@@ -13,9 +13,6 @@ set list listchars=tab:❘-,trail:·,extends:»,precedes:«,nbsp:×
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.local/share/nvim/plugged')
 
-" Nerdtree file browser
-Plug 'scrooloose/nerdtree'
-
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
 
@@ -37,36 +34,17 @@ Plug 'othree/yajs.vim'
 " Fucking CoffeeScript
 Plug 'kchmck/vim-coffee-script'
 
+" Sass
+Plug 'cakebaker/scss-syntax.vim'
+
 " jsdoc
 Plug 'heavenshell/vim-jsdoc'
-
-" Stylus
-Plug 'wavded/vim-stylus'
-
-" Better Whitespace
-Plug 'ntpeters/vim-better-whitespace'
-
-"Latex
-Plug 'lervag/vimtex'
 
 "Jade
 Plug 'statianzo/vim-jade'
 
-" Neocomplete
-Plug 'shougo/neocomplete.vim'
-
-" Github
-" - gists
-Plug 'mattn/gist-vim'
-
-" Markdown
-Plug 'godlygeek/tabular'
+"Markdown
 Plug 'plasticboy/vim-markdown'
-
-" Vim airline: status bar
-Plug 'bling/vim-airline'
-
-Plug 'stephpy/vim-yaml'
 
 " Solarized colorscheme
 Plug 'altercation/vim-colors-solarized'
@@ -89,3 +67,7 @@ autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 let g:NERDTreeMapActivateNode = ''
 let g:NERDTreeMapOpenInTab = 'o'
 map <C-n> :NERDTreeToggle<CR>
+
+autocmd FileType python setlocal tabstop=4
+
+set clipboard=unnamed
