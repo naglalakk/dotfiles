@@ -46,6 +46,9 @@ Plug 'statianzo/vim-jade'
 "Markdown
 Plug 'plasticboy/vim-markdown'
 
+"Latex
+Plug 'lervag/vimtex'
+
 " Solarized colorscheme
 Plug 'altercation/vim-colors-solarized'
 
