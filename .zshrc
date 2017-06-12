@@ -105,3 +105,6 @@ export NVM_DIR="/Users/Donna/.nvm"
 
 # Python: pyenv
 if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+
+# Latex
+export PATH="$PATH:/Library/TeX/texbin"

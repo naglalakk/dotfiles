@@ -61,15 +61,9 @@ set background=dark
 colorscheme solarized
 
 filetype on
+filetype plugin on
 filetype plugin indent on
 filetype indent on
-
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
-
-let g:NERDTreeMapActivateNode = ''
-let g:NERDTreeMapOpenInTab = 'o'
-map <C-n> :NERDTreeToggle<CR>
 
 autocmd FileType python setlocal tabstop=4
 
