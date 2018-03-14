@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, pyenv)
+plugins=(git, pyenv, docker)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -89,6 +89,12 @@ alias vim=nvim
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 #
+#
+# Haskell
+export PATH=$HOME/.local/bin:$PATH
+
+alias stack=$HOME/.local/bin/stack
+
 # # Golang
 export GOPATH=$HOME/Code/K0TT/repos/Go
 export GOROOT=/usr/local/opt/go/libexec
@@ -104,7 +110,16 @@ export NVM_DIR="/Users/Donna/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 # Python: pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
+if which pyenv > /dev/null; 
+	then 
+		eval "$(pyenv init -)"; 
+		eval "$(pyenv virtualenv-init -)";
+fi
 
 # Latex
 export PATH="$PATH:/Library/TeX/texbin"
+
+export PATH=/Users/Donna/.local/bin/luna-studio:$PATH
+
+# Custom scripts
+export PATH=/Users/Donna/Code/scripts:$PATH
