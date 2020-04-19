@@ -7,7 +7,7 @@ export ZSH=/Users/Donna/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -51,7 +51,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git, pyenv, docker)
+plugins=(zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -88,18 +88,31 @@ alias vim=nvim
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-#
-#
+
 # Haskell
 export PATH=$HOME/.local/bin:$PATH
-
 alias stack=$HOME/.local/bin/stack
+
+# ghcup
+source /Users/Donna/.ghcup/env
+
+# Purescript
+export PATH=$HOME/Code/scripts/psc-package:$PATH
+
+# Nix
+if [ -e /Users/Donna/.nix-profile/etc/profile.d/nix.sh ]; then source /Users/Donna/.nix-profile/etc/profile.d/nix.sh; fi
+
+# Python/pyenv
+export PYTHON_CONFIGURE_OPTS="--enable-framework"
+eval "$(pyenv init -)"
+# eval "$(pyenv virtualenv-init -)"
 
 # # Golang
 export GOPATH=$HOME/Code/K0TT/repos/Go
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$GOROOT/bin
+
 
 # Ruby: rvm
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
@@ -109,13 +122,6 @@ source /Users/Donna/.rvm/scripts/rvm
 export NVM_DIR="/Users/Donna/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-# Python: pyenv
-if which pyenv > /dev/null; 
-	then 
-		eval "$(pyenv init -)"; 
-		eval "$(pyenv virtualenv-init -)";
-fi
-
 # Latex
 export PATH="$PATH:/Library/TeX/texbin"
 
@@ -123,3 +129,22 @@ export PATH=/Users/Donna/.local/bin/luna-studio:$PATH
 
 # Custom scripts
 export PATH=/Users/Donna/Code/scripts:$PATH
+export PATH="/usr/local/opt/qt/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/Donna/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Donna/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/Donna/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Donna/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+export PATH="$PATH:$HOME/.cargo/bin"
+
+source /Users/Donna/.nix-profile/etc/profile.d/nix.sh
+
+export PATH="$PATH:/Users/Donna/.dotnet/tools"
+
+alias ddotnet="ASPNETCORE_ENVIRONMENT=Development dotnet"
+
+export PATH="$PATH:/Library/TeX/texbin/"
+
+

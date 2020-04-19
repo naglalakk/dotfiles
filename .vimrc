@@ -1,68 +1,146 @@
-execute pathogen#infect()
-
 syntax on
-filetype plugin indent on
 
-set nocompatible
 set number
-set nowrap
-set showmode
-set tw=80
-set smartcase
-set smarttab
-set smartindent
-set autoindent
 set softtabstop=4
 set shiftwidth=4
 set expandtab
-set incsearch
-set mouse=a
-set history=1000
+set autoindent
+set clipboard=unnamed
+set nobackup noswapfile
+set colorcolumn=80
 
-set completeopt=menuone,menu,longest
+call plug#begin()
 
-set wildignore+=*\\tmp\\*,*.swp,*.swo,*.zip,.git,.cabal-sandbox
-set wildmode=longest,list,full
-set wildmenu
-set completeopt+=longest
+" Autocomplete
+" Use release branch
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-set t_Co=256
+" Autosave
+Plug '907th/vim-auto-save'
 
-set cmdheight=1
+" Dhall
+Plug 'vmchale/dhall-vim'
 
-map <Leader>s :SyntasticToggleMode<CR>
+" File Explorer
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+" Format
+Plug 'sbdchd/neoformat'
+Plug 'junegunn/vim-easy-align'
+Plug 'Yggdroot/indentLine'
 
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
-let g:syntastic_check_on_open = 0
-let g:syntastic_check_on_wq = 0
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
+" Haskell
+Plug 'neovimhaskell/haskell-vim'
+Plug 'meck/vim-brittany'
+"Plug 'ndmitchell/ghcid', { 'rtp': 'plugins/nvim' }
+" Plug 'alx741/vim-hindent'
 
-map <silent> tw :GhcModTypeInsert<CR>
-map <silent> ts :GhcModSplitFunCase<CR>
-map <silent> tq :GhcModType<CR>
-map <silent> te :GhcModTypeClear<CR>
+Plug 'Shougo/vimproc.vim', {'do': 'make'}
 
+" Javascript
+Plug 'pangloss/vim-javascript'
+Plug 'heavenshell/vim-jsdoc'
 
-let g:SuperTabDefaultCompletionType = '<c-x><c-o>'
+" Nix
+Plug 'LnL7/vim-nix'
 
-if has("gui_running")
-  imap <c-space> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-else " no gui
-  if has("unix")
-    inoremap <Nul> <c-r>=SuperTabAlternateCompletion("\<lt>c-x>\<lt>c-o>")<cr>
-  endif
-endif
+" Purescript
+Plug 'purescript-contrib/purescript-vim'
+" Plug 'frigoeu/psc-ide-vim'
 
-let g:haskellmode_completion_ghc = 1
-autocmd FileType haskell setlocal omnifunc=necoghc#omnifunc
+" Python
+Plug 'vim-scripts/indentpython.vim'
 
-let g:haskell_tabular = 1
+" PHP
+Plug 'StanAngeloff/php.vim'
+Plug 'stephpy/vim-php-cs-fixer'
+Plug '2072/PHP-Indenting-for-VIm'
 
-vmap a= :Tabularize /=<CR>
-vmap a; :Tabularize /::<CR>
-vmap a- :Tabularize /-><CR>
+Plug 'digitaltoad/vim-pug'
+Plug 'wavded/vim-stylus'
+
+" Python
+Plug 'tell-k/vim-autopep8'
+
+" Latex
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
+" Rust
+Plug 'rust-lang/rust.vim'
+
+" Sessions
+Plug 'tpope/vim-obsession'
+
+" Snippets
+Plug 'Shougo/neosnippet.vim'
+Plug 'Shougo/neosnippet-snippets'
+Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+
+"Tidal
+Plug 'tidalcycles/vim-tidal'
+
+Plug 'neomake/neomake'
+Plug 'junegunn/vim-journal'
+Plug 'godlygeek/tabular'
+Plug 'ervandew/supertab'
+
+" Initialize plugin system
+call plug#end()
+
+map <C-n> :NERDTreeToggle<CR>
+
+autocmd BufEnter,BufRead *.vue  set filetype=vue.javascript
+autocmd BufEnter,BufRead *.styl set shiftwidth=2
+autocmd BufEnter,BufRead *.purs set shiftwidth=2
+autocmd BufEnter,BufRead *.hs   set shiftwidth=2
+autocmd BufEnter,BufRead *.pug  set shiftwidth=2
+
+"vmap a= :Tabularize /=<CR>
+"vmap a; :Tabularize /::<CR>
+"vmap a- :Tabularize /-><CR>
+
+let g:auto_save = 1  " enable AutoSave on Vim startup
+
+" Haskell rules
+let g:haskell_classic_highlighting    = 1
+let g:haskell_indent_if               = 2
+let g:haskell_indent_case             = 2
+let g:haskell_indent_let              = 2
+let g:haskell_indent_where            = 2
+let g:haskell_indent_before_where     = 2
+let g:haskell_indent_after_bare_where = 2
+let g:haskell_indent_do               = 2
+let g:haskell_indent_in               = 2
+let g:haskell_indent_guard            = 2
+let g:haskell_indent_case_alternative = 2
+let g:cabal_indent_section            = 2
+
+" Purescript rules
+let purescript_indent_if    = 2
+let purescript_indent_case  = 2
+let purescript_indent_let   = 2
+let purescript_indent_where = 2
+let purescript_indent_do    = 2
+let purescript_indent_in    = 2
+
+" Latex
+let g:livepreview_previewer = 'open -a Preview'
+
+let g:python3_host_prog = '~/.pyenv/shims/python'
+
+" UltiSnips triggering
+let g:UltiSnipsExpandTrigger = '<C-j>'
+let g:UltiSnipsJumpForwardTrigger = '<C-j>'
+let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+
+let g:UltiSnipsSnippetsDir='/Users/Donna/.config/nvim/UltiSnips'
+let g:UltiSnipsSnippetDirectories=['Ultisnips']
+
+set completeopt-=preview
+
+filetype on
+filetype plugin indent on
