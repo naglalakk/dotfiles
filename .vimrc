@@ -27,8 +27,9 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Format
 Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-easy-align'
+Plug 'godlygeek/tabular'
+Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
-
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
@@ -69,6 +70,11 @@ Plug 'tell-k/vim-autopep8'
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
 
+" Markdown
+Plug 'junegunn/vim-journal'
+Plug 'JamshedVesuna/vim-markdown-preview'
+
+
 " Rust
 Plug 'rust-lang/rust.vim'
 
@@ -84,15 +90,13 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 Plug 'tidalcycles/vim-tidal'
 
 Plug 'neomake/neomake'
-Plug 'junegunn/vim-journal'
-Plug 'godlygeek/tabular'
-Plug 'ervandew/supertab'
 
 " Initialize plugin system
 call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 
+autocmd BufEnter,BufRead *.md   set filetype=journal
 autocmd BufEnter,BufRead *.vue  set filetype=vue.javascript
 autocmd BufEnter,BufRead *.styl set shiftwidth=2
 autocmd BufEnter,BufRead *.purs set shiftwidth=2
@@ -118,6 +122,7 @@ let g:haskell_indent_in               = 2
 let g:haskell_indent_guard            = 2
 let g:haskell_indent_case_alternative = 2
 let g:cabal_indent_section            = 2
+let g:brittany_on_save                = 0
 
 " Purescript rules
 let purescript_indent_if    = 2
@@ -139,6 +144,10 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
 let g:UltiSnipsSnippetsDir='/Users/Donna/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
+
+" github flavoured markdown on preview
+let vim_markdown_preview_github=1
+let vim_markdown_preview_browser='Firefox'
 
 set completeopt-=preview
 
