@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/Donna/.oh-my-zsh
+export ZSH=/Users/donna/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -11,6 +11,9 @@ ZSH_THEME="agnoster"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+#
+#
+ZSH_DISABLE_COMPFIX="true"
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -51,7 +54,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions)
+plugins=()
 
 source $ZSH/oh-my-zsh.sh
 
@@ -90,61 +93,71 @@ alias vim=nvim
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Haskell
-export PATH=$HOME/.local/bin:$PATH
-alias stack=$HOME/.local/bin/stack
-
-# ghcup
-source /Users/Donna/.ghcup/env
+# export PATH=$HOME/.local/bin:$PATH
+# alias stack=$HOME/.local/bin/stack
+[ -f "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env" ] && source "${GHCUP_INSTALL_BASE_PREFIX:=$HOME}/.ghcup/env"
 
 # Purescript
-export PATH=$HOME/Code/scripts/psc-package:$PATH
+# export PATH=$HOME/Code/scripts/psc-package:$PATH
 
 # Nix
-if [ -e /Users/Donna/.nix-profile/etc/profile.d/nix.sh ]; then source /Users/Donna/.nix-profile/etc/profile.d/nix.sh; fi
+# if [ -e /Users/Donna/.nix-profile/etc/profile.d/nix.sh ]; then source /Users/Donna/.nix-profile/etc/profile.d/nix.sh; fi
+# source /Users/Donna/.nix-profile/etc/profile.d/nix.sh
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
 
-# Python/pyenv
-export PYTHON_CONFIGURE_OPTS="--enable-framework"
-eval "$(pyenv init -)"
-# eval "$(pyenv virtualenv-init -)"
 
 # # Golang
-export GOPATH=$HOME/Code/K0TT/repos/Go
-export GOROOT=/usr/local/opt/go/libexec
-export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:$GOROOT/bin
-
+# export GOPATH=$HOME/Code/K0TT/repos/Go
+# export GOROOT=/usr/local/opt/go/libexec
+# export PATH=$PATH:$GOPATH/bin
+# export PATH=$PATH:$GOROOT/bin
 
 # Ruby: rvm
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source /Users/Donna/.rvm/scripts/rvm
+# export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+# source /Users/Donna/.rvm/scripts/rvm
+#
+# Python
+export PYENV_ROOT="$HOME/.pyenv"
+eval "$(pyenv init -)"
 
-# Node: nvm
-export NVM_DIR="/Users/Donna/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+# nvm
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Latex
-export PATH="$PATH:/Library/TeX/texbin"
+# export PATH="$PATH:/Library/TeX/texbin"
+# export PATH="$PATH:/Library/TeX/texbin/"
 
-export PATH=/Users/Donna/.local/bin/luna-studio:$PATH
+# Luna studio
+# export PATH=/Users/Donna/.local/bin/luna-studio:$PATH
+
+# Rust
+# export PATH="$PATH:$HOME/.cargo/bin"
 
 # Custom scripts
-export PATH=/Users/Donna/Code/scripts:$PATH
-export PATH="/usr/local/opt/qt/bin:$PATH"
+# export PATH=/Users/Donna/Code/scripts:$PATH
+# export PATH="/usr/local/opt/qt/bin:$PATH"
 
 # The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/Donna/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Donna/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+# if [ -f '/Users/Donna/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/Donna/Desktop/google-cloud-sdk/path.zsh.inc'; fi
 
 # The next line enables shell command completion for gcloud.
-if [ -f '/Users/Donna/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Donna/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+# if [ -f '/Users/Donna/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/Donna/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
 
-export PATH="$PATH:$HOME/.cargo/bin"
+# .NET stuff
+# export PATH="$PATH:/Users/Donna/.dotnet/tools"
+# alias ddotnet="ASPNETCORE_ENVIRONMENT=Development dotnet"
 
-source /Users/Donna/.nix-profile/etc/profile.d/nix.sh
+# Imagemagick
+export PATH="/usr/local/opt/imagemagick@6/bin:$PATH"
+export PKG_CONFIG_PATH="/usr/local/opt/imagemagick@6/lib/pkgconfig"
 
-export PATH="$PATH:/Users/Donna/.dotnet/tools"
+# Local bin
+export PATH="$HOME/.local/bin:$PATH"
 
-alias ddotnet="ASPNETCORE_ENVIRONMENT=Development dotnet"
+# Code path
+export PATH="$HOME/Code/path/bin:$PATH"
 
-export PATH="$PATH:/Library/TeX/texbin/"
-
-
+export TERM="screen-256color"
+alias tmux="tmux -2"
