@@ -8,6 +8,10 @@ set autoindent
 set clipboard=unnamed
 set nobackup noswapfile
 set colorcolumn=80
+set termguicolors
+set nocompatible
+set ttyfast
+set lazyredraw
 
 call plug#begin()
 
@@ -17,11 +21,12 @@ Plug 'itchyny/lightline.vim'
 " Autocomplete
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Autosave
 Plug '907th/vim-auto-save'
 
+" CSS / Style
+Plug 'wavded/vim-stylus'
 
 " Dhall
 Plug 'vmchale/dhall-vim'
@@ -32,7 +37,6 @@ Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Format
 Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-easy-align'
-" Plug 'godlygeek/tabular'
 Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
 
@@ -49,22 +53,11 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
 
-" Language Servers
-" Plug 'autozimu/LanguageClient-neovim', {
-"    \ 'branch': 'next',
-"    \ 'do': 'bash install.sh',
-"    \ }
-
-" (Optional) Multi-entry selection UI.
-Plug 'junegunn/fzf'
-
 " Nix
 Plug 'LnL7/vim-nix'
 
 " Purescript
 Plug 'purescript-contrib/purescript-vim'
-"Plug 'sriharshachilakapati/vimmer-ps'
-" Plug 'frigoeu/psc-ide-vim'
 
 " Python
 Plug 'vim-scripts/indentpython.vim'
@@ -74,8 +67,8 @@ Plug 'StanAngeloff/php.vim'
 Plug 'stephpy/vim-php-cs-fixer'
 Plug '2072/PHP-Indenting-for-VIm'
 
+" Pug
 Plug 'digitaltoad/vim-pug'
-Plug 'wavded/vim-stylus'
 
 " Python
 Plug 'tell-k/vim-autopep8'
@@ -99,9 +92,8 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+
 " Themes
-" Plug 'overcache/NeoSolarized'
-" Plug 'mhartington/oceanic-next'
 Plug 'ghifarit53/tokyonight-vim'
 
 "Typescript
@@ -121,6 +113,7 @@ autocmd BufEnter,BufRead *.styl set shiftwidth=2
 autocmd BufEnter,BufRead *.purs set shiftwidth=2
 autocmd BufEnter,BufRead *.hs   set shiftwidth=2
 autocmd BufEnter,BufRead *.pug  set shiftwidth=2
+autocmd BufReadPost *.rs setlocal filetype=rust
 
 " Enable spell checking for .md files
 autocmd BufNewFile,BufRead *.md setlocal spell
@@ -140,7 +133,6 @@ let g:haskell_indent_in               = 2
 let g:haskell_indent_guard            = 2
 let g:haskell_indent_case_alternative = 2
 let g:cabal_indent_section            = 2
-let g:brittany_on_save                = 0
 
 " Purescript rules
 let purescript_indent_if    = 2
@@ -149,14 +141,6 @@ let purescript_indent_let   = 2
 let purescript_indent_where = 2
 let purescript_indent_do    = 2
 let purescript_indent_in    = 2
-
-let g:vimmerps_config =
-    \ { 'autoStartPscIde': v:true
-    \ , 'pscIdePort': v:null
-    \ , 'autocompleteAddImport': v:true
-    \ , 'pursExe': 'purs'
-    \ , 'addNpmPath': v:true
-    \ }
 
 syntax enable
 set termguicolors
@@ -168,22 +152,22 @@ colorscheme tokyonight
 
 let g:lightline = {'colorscheme' : 'tokyonight'}
 
-" Haskell
-let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
+" LanguageClient
+" let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
 
 " Latex
 let g:livepreview_previewer = 'open -a Preview'
 
-let g:python3_host_prog = '/Users/donna/.pyenv/shims/python'
+let g:python3_host_prog = '$HOME/.pyenv/shims/python'
 
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 " UltiSnips triggering
 let g:UltiSnipsExpandTrigger = '<C-j>'
 let g:UltiSnipsJumpForwardTrigger = '<C-j>'
 let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 
-let g:UltiSnipsSnippetsDir='/Users/donna/.config/nvim/UltiSnips'
+let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
 let g:mkdp_browser = 'safari'

@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/donna/.oh-my-zsh
+export ZSH=$HOME/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -158,6 +158,8 @@ export PATH="$HOME/.local/bin:$PATH"
 
 # Code path
 export PATH="$HOME/Code/path/bin:$PATH"
-
 export TERM="screen-256color"
 alias tmux="tmux -2"
+
+export PYTHONPATH="$HOME/donna/Code/github/StackGAN:$PYTHONPATH"
+alias pip2=$HOME/Library/Python/2.7/bin/pip2.7
