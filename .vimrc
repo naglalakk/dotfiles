@@ -120,6 +120,9 @@ autocmd BufNewFile,BufRead *.md setlocal spell
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
+" Coc rules
+let g:coc_start_at_startup = v:false
+
 " Haskell rules
 let g:haskell_classic_highlighting    = 1
 let g:haskell_indent_if               = 2
@@ -171,6 +174,7 @@ let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
 let g:mkdp_browser = 'safari'
+
 
 set completeopt-=preview
 
