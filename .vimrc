@@ -5,13 +5,13 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set autoindent
-set clipboard=unnamed
 set nobackup noswapfile
 set colorcolumn=80
-set termguicolors
 set nocompatible
-set ttyfast
-set lazyredraw
+set termguicolors
+"set clipboard=unnamed
+"set lazyredraw
+"set ttyfast
 
 call plug#begin()
 
@@ -94,6 +94,7 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 
 " Themes
+" Plug 'folke/tokyonight.nvim'
 Plug 'ghifarit53/tokyonight-vim'
 
 "Typescript
@@ -146,22 +147,18 @@ let purescript_indent_do    = 2
 let purescript_indent_in    = 2
 
 syntax enable
-set termguicolors
 
 let g:tokyonight_style = 'night' " available: night, storm
 let g:tokyonight_enable_italic = 1
+let g:lightline = {'colorscheme' : 'tokyonight'}
+set bg=dark
 
 colorscheme tokyonight
 
-let g:lightline = {'colorscheme' : 'tokyonight'}
-
-" LanguageClient
-" let g:LanguageClient_serverCommands = { 'haskell': ['haskell-language-server-wrapper', '--lsp'] }
-
 " Latex
-let g:livepreview_previewer = 'open -a Preview'
+" let g:livepreview_previewer = 'open -a Preview'
 
-let g:python3_host_prog = '$HOME/.pyenv/shims/python'
+let g:python3_host_prog = '/usr/bin/python'
 
 " let g:deoplete#enable_at_startup = 1
 
@@ -173,10 +170,10 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
-let g:mkdp_browser = 'safari'
+let g:mkdp_browser = 'firefox'
 
 
-set completeopt-=preview
+"set completeopt-=preview
 
 filetype on
 filetype plugin indent on
