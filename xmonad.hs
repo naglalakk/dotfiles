@@ -21,7 +21,7 @@ import XMonad
 import XMonad.Actions.SpawnOn (spawnOn)
 import XMonad.Config.Gnome
 import XMonad.Core (spawn)
-import XMonad.Hooks.ManageDocks (docks)
+import XMonad.Hooks.ManageDocks (avoidStruts, docks)
 import qualified XMonad.StackSet as W
 import XMonad.Util.Run (spawnPipe)
 import XMonad.Util.SpawnOnce (spawnOnOnce, spawnOnce)
@@ -203,7 +203,7 @@ myMouseBindings (XConfig {XMonad.modMask = modm}) =
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = tiled ||| Mirror tiled ||| Full
+myLayout = avoidStruts (tiled ||| Mirror tiled ||| Full)
   where
     -- default tiling algorithm partitions the screen into two panes
     tiled = Tall nmaster delta ratio
