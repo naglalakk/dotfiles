@@ -9,6 +9,7 @@ set nobackup noswapfile
 set colorcolumn=80
 set nocompatible
 set termguicolors
+set clipboard+=unnamedplus
 "set clipboard=unnamed
 "set lazyredraw
 "set ttyfast
@@ -123,6 +124,7 @@ let g:auto_save = 1  " enable AutoSave on Vim startup
 
 " Coc rules
 let g:coc_start_at_startup = v:false
+let g:node_client_debug = 1
 
 " Haskell rules
 let g:haskell_classic_highlighting    = 1
