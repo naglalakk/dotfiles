@@ -43,7 +43,6 @@ Plug 'Yggdroot/indentLine'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-Plug 'sdiehl/vim-ormolu'
 
 " HTML
 Plug 'alvan/vim-closetag'
@@ -159,8 +158,12 @@ colorscheme tokyonight
 
 " Latex
 " let g:livepreview_previewer = 'open -a Preview'
-
-let g:python3_host_prog = '/usr/bin/python'
+"
+" Python provider
+if has("nvim")
+    let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
+    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python"
+endif
 
 " let g:deoplete#enable_at_startup = 1
 
