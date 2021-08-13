@@ -292,6 +292,8 @@ myStartupHook :: X ()
 myStartupHook = do
   spawnOnOnce "1" "gnome-terminal"
   spawnOnOnce "2" "firefox"
+  -- Start xmobar
+  spawnOnce "xmobar"
   spawn "setxkbmap -layout is"
   spawnOnce "redshift -O 3100"
 
@@ -301,8 +303,6 @@ myStartupHook = do
 -- Run xmonad with the settings you specify. No need to modify this.
 --
 main = do
-  -- Start xmobar
-  xmproc <- spawnPipe "xmobar"
   -- XMonad
   xmonad $ docks $ defaults
 
