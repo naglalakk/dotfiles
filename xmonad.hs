@@ -290,8 +290,10 @@ myLogHook = return ()
 --
 myStartupHook :: X ()
 myStartupHook = do
-  spawnOnOnce "1" "gnome-terminal"
-  spawnOnOnce "2" "firefox"
+  spawnOnOnce "1" "slack"
+  spawnOnOnce "1" "thunderbird"
+  spawnOnOnce "2" "gnome-terminal"
+  spawnOnOnce "3" "chromium"
   -- Start xmobar
   spawnOnce "xmobar"
   spawn "setxkbmap -layout is"

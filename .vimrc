@@ -22,9 +22,14 @@ Plug 'itchyny/lightline.vim'
 " Autocomplete
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
 " Autosave
 Plug '907th/vim-auto-save'
+
+" Basics
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " CSS / Style
 Plug 'wavded/vim-stylus'
@@ -40,9 +45,16 @@ Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-easy-align'
 Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'yarn install --frozen-lockfile --production',
+  \ 'for': ['javascript', 'typescript'] }
+
+
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
+Plug 'sdiehl/vim-ormolu'
 
 " HTML
 Plug 'alvan/vim-closetag'
@@ -53,6 +65,9 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
 
+" Linting
+Plug 'dense-analysis/ale'
+
 " Nix
 Plug 'LnL7/vim-nix'
 
@@ -61,6 +76,7 @@ Plug 'purescript-contrib/purescript-vim'
 
 " Python
 Plug 'vim-scripts/indentpython.vim'
+Plug 'psf/black', { 'branch': 'stable' }
 
 " PHP
 Plug 'StanAngeloff/php.vim'
@@ -71,7 +87,8 @@ Plug '2072/PHP-Indenting-for-VIm'
 Plug 'digitaltoad/vim-pug'
 
 " Python
-Plug 'tell-k/vim-autopep8'
+Plug 'Vimjas/vim-python-pep8-indent'
+" Plug 'tell-k/vim-autopep8'
 
 " Latex
 Plug 'lervag/vimtex'
@@ -92,10 +109,15 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
+" Syntax highlighting
+Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " Themes
+Plug 'davidbachmann/vim-punk-colorscheme'
 " Plug 'folke/tokyonight.nvim'
-Plug 'ghifarit53/tokyonight-vim'
+" Plug 'ghifarit53/tokyonight-vim'
+" Plug 'mangeshrex/uwu.vim'
+" Plug 'haishanh/night-owl.vim'
 
 "Typescript
 Plug 'leafgarland/typescript-vim'
@@ -116,14 +138,30 @@ autocmd BufEnter,BufRead *.hs   set shiftwidth=2
 autocmd BufEnter,BufRead *.pug  set shiftwidth=2
 autocmd BufReadPost *.rs setlocal filetype=rust
 
+" Run black on save for Python
+autocmd BufWritePre *.py execute ':Black'
+
 " Enable spell checking for .md files
 autocmd BufNewFile,BufRead *.md setlocal spell
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
+" Ale rules
+let g:ale_linters = {
+    \    'python': ['flake8', 'pylint', 'mypy'],
+    \}
+
+"let g:ale_fixers = {
+"    \    'purescript': ['purs-tidy'],
+"    \}
+
+let g:ale_fix_on_save = 1
+let g:ale_completion_enabled = 1
+
 " Coc rules
 let g:coc_start_at_startup = v:false
 let g:node_client_debug = 1
+
 
 " Haskell rules
 let g:haskell_classic_highlighting    = 1
@@ -147,14 +185,27 @@ let purescript_indent_where = 2
 let purescript_indent_do    = 2
 let purescript_indent_in    = 2
 
+
+""""" enable 24bit true color
+
+" If you have vim >=8.0 or Neovim >= 0.1.5
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+" For Neovim 0.1.3 and 0.1.4
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+
+""""" enable the theme
 syntax enable
-
-let g:tokyonight_style = 'night' " available: night, storm
-let g:tokyonight_enable_italic = 1
-let g:lightline = {'colorscheme' : 'tokyonight'}
 set bg=dark
+colorscheme punk
 
-colorscheme tokyonight
+" let g:tokyonight_style = 'night' " available: night, storm
+" let g:tokyonight_enable_italic = 1
+
+" To enable the lightline theme
+let g:lightline = { 'colorscheme': 'molokai' }
 
 " Latex
 " let g:livepreview_previewer = 'open -a Preview'
@@ -164,8 +215,6 @@ if has("nvim")
     let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
     let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python"
 endif
-
-" let g:deoplete#enable_at_startup = 1
 
 " UltiSnips triggering
 let g:UltiSnipsExpandTrigger = '<C-j>'
