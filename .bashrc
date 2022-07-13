@@ -37,6 +37,11 @@ function sso (){
   $(aws-export-credentials --profile $AWS_PROFILE --credentials-file-profile $AWS_PROFILE)
 }
 
+# Pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
+
 # Nix
 export PATH="/home/donna/.nix-profile/bin:$PATH"
 

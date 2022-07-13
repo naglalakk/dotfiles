@@ -22,7 +22,6 @@ Plug 'itchyny/lightline.vim'
 " Autocomplete
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'pappasam/coc-jedi', { 'do': 'yarn install --frozen-lockfile && yarn build', 'branch': 'main' }
 
 " Autosave
 Plug '907th/vim-auto-save'
@@ -45,12 +44,9 @@ Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-easy-align'
 Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
-" post install (yarn install | npm install) then load plugin only for editing supported files
-Plug 'prettier/vim-prettier', {
-  \ 'do': 'yarn install --frozen-lockfile --production',
-  \ 'for': ['javascript', 'typescript'] }
 
-
+" Git
+Plug 'dinhhuy258/git.nvim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
@@ -112,12 +108,11 @@ Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 " Syntax highlighting
 Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
 
+" Terraform
+Plug 'hashivim/vim-terraform'
+
 " Themes
 Plug 'davidbachmann/vim-punk-colorscheme'
-" Plug 'folke/tokyonight.nvim'
-" Plug 'ghifarit53/tokyonight-vim'
-" Plug 'mangeshrex/uwu.vim'
-" Plug 'haishanh/night-owl.vim'
 
 "Typescript
 Plug 'leafgarland/typescript-vim'
@@ -130,13 +125,16 @@ call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 
-autocmd BufEnter,BufRead *.md   set filetype=journal
-autocmd BufEnter,BufRead *.vue  set filetype=vue.javascript
-autocmd BufEnter,BufRead *.styl set shiftwidth=2
-autocmd BufEnter,BufRead *.purs set shiftwidth=2
-autocmd BufEnter,BufRead *.hs   set shiftwidth=2
-autocmd BufEnter,BufRead *.pug  set shiftwidth=2
-autocmd BufReadPost *.rs setlocal filetype=rust
+autocmd BufEnter,BufRead *.md    set filetype=journal
+autocmd BufEnter,BufRead *.vue   set filetype=vue.javascript tabstop =2
+autocmd BufEnter,BufRead *.vue   set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.js    set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.scss  set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.styl  set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.purs  set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.hs    set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.pug   set shiftwidth=2 tabstop=2
+autocmd BufReadPost      *.rs    setlocal filetype=rust
 
 " Run black on save for Python
 autocmd BufWritePre *.py execute ':Black'
@@ -161,7 +159,14 @@ let g:ale_completion_enabled = 1
 " Coc rules
 let g:coc_start_at_startup = v:false
 let g:node_client_debug = 1
-
+let g:coc_global_extensions = [
+  \ 'coc-snippets',
+  \ 'coc-tsserver',
+  \ 'coc-eslint', 
+  \ 'coc-prettier', 
+  \ 'coc-json', 
+  \ 'coc-python',
+  \ ]
 
 " Haskell rules
 let g:haskell_classic_highlighting    = 1
@@ -184,7 +189,6 @@ let purescript_indent_let   = 2
 let purescript_indent_where = 2
 let purescript_indent_do    = 2
 let purescript_indent_in    = 2
-
 
 """"" enable 24bit true color
 
@@ -213,7 +217,7 @@ let g:lightline = { 'colorscheme': 'molokai' }
 " Python provider
 if has("nvim")
     let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
-    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python"
+    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
 endif
 
 " UltiSnips triggering
@@ -224,7 +228,7 @@ let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
 let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
-let g:mkdp_browser = 'firefox'
+let g:mkdp_browser = 'chromium'
 
 
 "set completeopt-=preview
