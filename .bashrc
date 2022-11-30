@@ -16,9 +16,9 @@ alias vim=nvim
 # Haskell / ghcup
 # Note: This breaks .xmonad --recompile
 # Comment this out on pacman -Syu (the solution for now :/)
-[ -f "/home/donna/.ghcup/env" ] && source "/home/donna/.ghcup/env" # ghcup-env
-export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-export PATH="/home/donna/.ghcup/bin:$PATH"
+# [ -f "/home/donna/.ghcup/env" ] && source "/home/donna/.ghcup/env"
+# export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+# export PATH="/home/donna/.ghcup/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -56,3 +56,7 @@ export PATH="/home/donna/.cargo/bin:$PATH"
 # eval `ssh-agent -s`
 # ssh-add
 # cargo update
+
+TFENV_INSTALL_DIR=$HOME/.tfenv
+export PATH="$HOME/.tfenv/bin:$PATH"
+export GITHUB_OWNER=Igloo-Laboratory

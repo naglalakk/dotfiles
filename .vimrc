@@ -19,6 +19,10 @@ call plug#begin()
 " Airline
 Plug 'itchyny/lightline.vim'
 
+" Agda
+Plug 'derekelkins/agda-vim'
+
+
 " Autocomplete
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -61,11 +65,17 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
 
+" Julia
+Plug 'JuliaEditorSupport/julia-vim'
+
 " Linting
 Plug 'dense-analysis/ale'
 
 " Nix
 Plug 'LnL7/vim-nix'
+
+" Notify
+Plug 'rcarriga/nvim-notify'
 
 " Purescript
 Plug 'purescript-contrib/purescript-vim'
@@ -73,6 +83,10 @@ Plug 'purescript-contrib/purescript-vim'
 " Python
 Plug 'vim-scripts/indentpython.vim'
 Plug 'psf/black', { 'branch': 'stable' }
+Plug 'Vimjas/vim-python-pep8-indent'
+Plug 'vim-python/python-syntax'
+" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+" Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }
 
 " PHP
 Plug 'StanAngeloff/php.vim'
@@ -81,10 +95,6 @@ Plug '2072/PHP-Indenting-for-VIm'
 
 " Pug
 Plug 'digitaltoad/vim-pug'
-
-" Python
-Plug 'Vimjas/vim-python-pep8-indent'
-" Plug 'tell-k/vim-autopep8'
 
 " Latex
 Plug 'lervag/vimtex'
@@ -105,14 +115,16 @@ Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
 Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
-" Syntax highlighting
-Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
+
+" Telescope
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 
 " Terraform
 Plug 'hashivim/vim-terraform'
 
 " Themes
-Plug 'davidbachmann/vim-punk-colorscheme'
+Plug 'danilo-augusto/vim-afterglow'
 
 "Typescript
 Plug 'leafgarland/typescript-vim'
@@ -133,6 +145,7 @@ autocmd BufEnter,BufRead *.scss  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.styl  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.purs  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.hs    set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.agda  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.pug   set shiftwidth=2 tabstop=2
 autocmd BufReadPost      *.rs    setlocal filetype=rust
 
@@ -149,9 +162,9 @@ let g:ale_linters = {
     \    'python': ['flake8', 'pylint', 'mypy'],
     \}
 
-"let g:ale_fixers = {
-"    \    'purescript': ['purs-tidy'],
-"    \}
+let g:ale_fixers = {
+    \    'purescript': ['purs-tidy'],
+    \}
 
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
@@ -200,16 +213,22 @@ endif
 " For Neovim 0.1.3 and 0.1.4
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
+
 """"" enable the theme
 syntax enable
 set bg=dark
-colorscheme punk
+" let ayucolor="dark"
+colorscheme afterglow
+
 
 " let g:tokyonight_style = 'night' " available: night, storm
 " let g:tokyonight_enable_italic = 1
 
 " To enable the lightline theme
 let g:lightline = { 'colorscheme': 'molokai' }
+
+" Disable semshi by default
+" let g:semshi#excluded_buffers = ['*']
 
 " Latex
 " let g:livepreview_previewer = 'open -a Preview'
@@ -219,6 +238,8 @@ if has("nvim")
     let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
     let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
 endif
+
+let g:python_highlight_all = 1
 
 " UltiSnips triggering
 let g:UltiSnipsExpandTrigger = '<C-j>'
