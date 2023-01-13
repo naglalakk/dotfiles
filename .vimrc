@@ -22,7 +22,6 @@ Plug 'itchyny/lightline.vim'
 " Agda
 Plug 'derekelkins/agda-vim'
 
-
 " Autocomplete
 " Use release branch
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -36,6 +35,7 @@ Plug 'junegunn/fzf.vim'
 
 " CSS / Style
 Plug 'wavded/vim-stylus'
+
 
 " Dhall
 Plug 'vmchale/dhall-vim'
@@ -54,7 +54,7 @@ Plug 'dinhhuy258/git.nvim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-Plug 'sdiehl/vim-ormolu'
+" Plug 'sdiehl/vim-ormolu'
 
 " HTML
 Plug 'alvan/vim-closetag'
@@ -68,8 +68,16 @@ Plug 'heavenshell/vim-jsdoc'
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
 
+" Latex
+Plug 'lervag/vimtex'
+Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
+
 " Linting
-Plug 'dense-analysis/ale'
+" Plug 'dense-analysis/ale'
+
+" Markdown
+Plug 'junegunn/vim-journal'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Nix
 Plug 'LnL7/vim-nix'
@@ -96,13 +104,6 @@ Plug '2072/PHP-Indenting-for-VIm'
 " Pug
 Plug 'digitaltoad/vim-pug'
 
-" Latex
-Plug 'lervag/vimtex'
-Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-
-" Markdown
-Plug 'junegunn/vim-journal'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}
 
 " Rust
 Plug 'rust-lang/rust.vim'
@@ -125,6 +126,9 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 Plug 'danilo-augusto/vim-afterglow'
+
+" Tools
+Plug 'evansalter/vim-checklist'
 
 "Typescript
 Plug 'leafgarland/typescript-vim'
@@ -162,16 +166,14 @@ let g:ale_linters = {
     \    'python': ['flake8', 'pylint', 'mypy'],
     \}
 
-let g:ale_fixers = {
-    \    'purescript': ['purs-tidy'],
-    \}
+let g:ale_fixers = {}
 
 let g:ale_fix_on_save = 1
 let g:ale_completion_enabled = 1
 
 " Coc rules
 let g:coc_start_at_startup = v:false
-let g:node_client_debug = 1
+" let g:node_client_debug = 1
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-tsserver',
@@ -217,12 +219,7 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 """"" enable the theme
 syntax enable
 set bg=dark
-" let ayucolor="dark"
 colorscheme afterglow
-
-
-" let g:tokyonight_style = 'night' " available: night, storm
-" let g:tokyonight_enable_italic = 1
 
 " To enable the lightline theme
 let g:lightline = { 'colorscheme': 'molokai' }
@@ -250,9 +247,6 @@ let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
 let g:mkdp_browser = 'chromium'
-
-
-"set completeopt-=preview
 
 filetype on
 filetype plugin indent on
