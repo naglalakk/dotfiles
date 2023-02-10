@@ -125,7 +125,11 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'hashivim/vim-terraform'
 
 " Themes
-Plug 'danilo-augusto/vim-afterglow'
+" Plug 'danilo-augusto/vim-afterglow'
+" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'yassinebridi/vim-purpura'
+
+
 
 " Tools
 Plug 'evansalter/vim-checklist'
@@ -219,10 +223,11 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 """"" enable the theme
 syntax enable
 set bg=dark
-colorscheme afterglow
+colorscheme purpura
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'molokai' }
+let g:lightline = { 'colorscheme': 'purpura' }
+
 
 " Disable semshi by default
 " let g:semshi#excluded_buffers = ['*']
@@ -247,6 +252,10 @@ let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
 let g:mkdp_browser = 'chromium'
+
+command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
+
+
 
 filetype on
 filetype plugin indent on
