@@ -126,8 +126,8 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 " Plug 'danilo-augusto/vim-afterglow'
-" Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'yassinebridi/vim-purpura'
+Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+" Plug 'yassinebridi/vim-purpura'
 
 
 
@@ -223,10 +223,10 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 """"" enable the theme
 syntax enable
 set bg=dark
-colorscheme purpura
+colorscheme tokyonight-night
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'purpura' }
+let g:lightline = { 'colorscheme': 'tokyonight' }
 
 
 " Disable semshi by default
