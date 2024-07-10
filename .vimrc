@@ -17,7 +17,7 @@ set clipboard+=unnamedplus
 call plug#begin()
 
 " Airline
-Plug 'itchyny/lightline.vim'
+" Plug 'itchyny/lightline.vim'
 
 " Agda
 Plug 'derekelkins/agda-vim'
@@ -64,6 +64,10 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
+" - Svelte
+Plug 'evanleck/vim-svelte'
+Plug 'codechips/coc-svelte', {'do': 'npm install'}
+
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
@@ -85,16 +89,17 @@ Plug 'LnL7/vim-nix'
 " Notify
 Plug 'rcarriga/nvim-notify'
 
+
 " Purescript
 Plug 'purescript-contrib/purescript-vim'
 
 " Python
+" Plug 'sheerun/vim-polyglot'
+Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/indentpython.vim'
-Plug 'psf/black', { 'branch': 'stable' }
+Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'Vimjas/vim-python-pep8-indent'
-Plug 'vim-python/python-syntax'
-" Plug 'numirias/semshi', { 'do': ':UpdateRemotePlugins' }
-" Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }
+" Plug 'vim-python/python-syntax'
 
 " PHP
 Plug 'StanAngeloff/php.vim'
@@ -114,7 +119,7 @@ Plug 'tpope/vim-obsession'
 " Snippets
 Plug 'Shougo/neosnippet.vim'
 Plug 'Shougo/neosnippet-snippets'
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
+" Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
 
 
 " Telescope
@@ -125,14 +130,11 @@ Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
 Plug 'hashivim/vim-terraform'
 
 " Themes
-" Plug 'danilo-augusto/vim-afterglow'
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-" Plug 'yassinebridi/vim-purpura'
-
-
 
 " Tools
 Plug 'evansalter/vim-checklist'
+Plug 'itchyny/lightline.vim'
 
 "Typescript
 Plug 'leafgarland/typescript-vim'
@@ -146,9 +148,10 @@ call plug#end()
 map <C-n> :NERDTreeToggle<CR>
 
 autocmd BufEnter,BufRead *.md    set filetype=journal
-autocmd BufEnter,BufRead *.vue   set filetype=vue.javascript tabstop =2
+autocmd BufEnter,BufRead *.vue   set filetype=vue tabstop =2
 autocmd BufEnter,BufRead *.vue   set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.js    set shiftwidth=2 tabstop=2
+autocmd BufEnter,BufRead *.ts    set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.scss  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.styl  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.purs  set shiftwidth=2 tabstop=2
@@ -181,7 +184,6 @@ let g:coc_start_at_startup = v:false
 let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-tsserver',
-  \ 'coc-eslint', 
   \ 'coc-prettier', 
   \ 'coc-json', 
   \ 'coc-python',
@@ -222,24 +224,28 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 
 """"" enable the theme
 syntax enable
-set bg=dark
-colorscheme tokyonight-night
+set background=dark
+colorscheme tokyonight
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'tokyonight' }
+let g:lightline = { 'colorscheme': 'seoul256' }
 
+" Semshi / Python
+let g:semshi#filetypes = ['python']
+let g:semshi#error_sign = v:false
+let g:semshi#always_update_all_highlights = v:true
 
-" Disable semshi by default
-" let g:semshi#excluded_buffers = ['*']
 
 " Latex
 " let g:livepreview_previewer = 'open -a Preview'
 "
+let g:tex_conceal = ""
+let g:vimtex_syntax_conceal_disable = 1
+
+"
 " Python provider
-if has("nvim")
-    let g:python_host_prog = $HOME . "/.pyenv/versions/neovim2/bin/python"
-    let g:python3_host_prog = $HOME . "/.pyenv/versions/neovim3/bin/python3"
-endif
+let g:python_host_prog = "/home/donna/.pyenv/versions/neovim2/bin/python"
+let g:python3_host_prog = "/home/donna/.pyenv/versions/neovim3/bin/python"
 
 let g:python_highlight_all = 1
 

@@ -29,7 +29,7 @@ import XMonad.Util.SpawnOnce (spawnOnOnce, spawnOnce)
 -- The preferred terminal program, which is used in a binding below and by
 -- certain contrib modules.
 --
-myTerminal = "gnome-terminal"
+myTerminal = "alacritty"
 
 -- Whether focus follows the mouse pointer.
 myFocusFollowsMouse :: Bool
@@ -290,10 +290,10 @@ myLogHook = return ()
 --
 myStartupHook :: X ()
 myStartupHook = do
-  spawnOnOnce "1" "slack"
   spawnOnOnce "1" "thunderbird"
-  spawnOnOnce "2" "gnome-terminal"
-  spawnOnOnce "3" "chromium"
+  spawnOnOnce "1" "slack"
+  spawnOnOnce "2" "alacritty"
+  spawnOnOnce "2" "chromium"
   -- Start xmobar
   spawnOnce "xmobar"
   spawn "setxkbmap -layout is"

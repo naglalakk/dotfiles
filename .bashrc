@@ -7,7 +7,6 @@ export PATH="/home/donna/.local/bin:$PATH"
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-
 alias ls='ls --color=auto'
 PS1='[\u@\h \W]\$ '
 
@@ -25,7 +24,7 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export DISPLAY=:1
-export PATH="$(yarn global bin):$PATH"
+# export PATH="$(yarn global bin):$PATH"
 
 # Setja í .zshrc
 export PATH="/usr/local/bin:$PATH"
@@ -36,11 +35,6 @@ function sso (){
   aws-sso-util login --profile $AWS_PROFILE
   $(aws-export-credentials --profile $AWS_PROFILE --credentials-file-profile $AWS_PROFILE)
 }
-
-# Pyenv
-export PYENV_ROOT="$HOME/.pyenv"
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
 
 # Nix
 export PATH="/home/donna/.nix-profile/bin:$PATH"
@@ -56,9 +50,8 @@ export PATH="/home/donna/.cargo/bin:$PATH"
 # eval `ssh-agent -s`
 # ssh-add
 # cargo update
-
-TFENV_INSTALL_DIR=$HOME/.tfenv
-export PATH="$HOME/.tfenv/bin:$PATH"
+# TFENV_INSTALL_DIR=$HOME/.tfenv
+# export PATH="$HOME/.tfenv/bin:$PATH"
 _nvmrc_hook() {
   if [[ $PWD == $PREV_PWD ]]; then
     return
@@ -71,3 +64,21 @@ _nvmrc_hook() {
 if ! [[ "${PROMPT_COMMAND:-}" =~ _nvmrc_hook ]]; then
   PROMPT_COMMAND="_nvmrc_hook${PROMPT_COMMAND:+;$PROMPT_COMMAND}"
 fi
+
+eval "$(direnv hook bash)"
+
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# some poetry hack idk
+export PYTHON_KEYRING_BACKEND=keyring.backends.null.Keyring
+export PATH="$HOME/.poetry/bin:$PATH"
+# alias poetry=poetry@1.4
+
+export DOTNET_ROOT=$HOME/.dotnet
+export PATH=$PATH:$DOTNET_ROOT:$DOTNET_ROOT/tools
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
