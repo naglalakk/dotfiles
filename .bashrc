@@ -15,15 +15,14 @@ alias vim=nvim
 # Haskell / ghcup
 # Note: This breaks .xmonad --recompile
 # Comment this out on pacman -Syu (the solution for now :/)
-# [ -f "/home/donna/.ghcup/env" ] && source "/home/donna/.ghcup/env"
-# export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
-# export PATH="/home/donna/.ghcup/bin:$PATH"
+[ -f "/home/donna/.ghcup/env" ] && source "/home/donna/.ghcup/env"
+export PATH="$HOME/.cabal/bin:$HOME/.ghcup/bin:$PATH"
+export PATH="/home/donna/.ghcup/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export DISPLAY=:1
 # export PATH="$(yarn global bin):$PATH"
 
 # Setja í .zshrc

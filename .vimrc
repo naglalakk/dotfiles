@@ -131,6 +131,11 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'diegoulloao/neofusion.nvim'
+Plug 'crispybaccoon/aurora'
+Plug 'maxmx03/solarized.nvim'
+Plug 'cocopon/iceberg.vim'
+Plug 'Badacadabra/vim-archery'
 
 " Tools
 Plug 'evansalter/vim-checklist'
@@ -225,10 +230,10 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 """"" enable the theme
 syntax enable
 set background=dark
-colorscheme tokyonight
+colorscheme iceberg
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'seoul256' }
+let g:lightline = { 'colorscheme': 'iceberg' }
 
 " Semshi / Python
 let g:semshi#filetypes = ['python']
@@ -245,7 +250,7 @@ let g:vimtex_syntax_conceal_disable = 1
 "
 " Python provider
 let g:python_host_prog = "/home/donna/.pyenv/versions/neovim2/bin/python"
-let g:python3_host_prog = "/home/donna/.pyenv/versions/neovim3/bin/python"
+let g:python3_host_prog = "/home/donna/.pyenv/versions/neovim3.11.5/bin/python"
 
 let g:python_highlight_all = 1
 
