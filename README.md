@@ -1,4 +1,4 @@
 dotfiles
 ===========
 
-My arch / xmonad setup.
+dotfiles for OSX setup
