@@ -10,14 +10,8 @@ set colorcolumn=80
 set nocompatible
 set termguicolors
 set clipboard+=unnamedplus
-"set clipboard=unnamed
-"set lazyredraw
-"set ttyfast
 
 call plug#begin()
-
-" Airline
-" Plug 'itchyny/lightline.vim'
 
 " Agda
 Plug 'derekelkins/agda-vim'
@@ -54,7 +48,6 @@ Plug 'dinhhuy258/git.nvim'
 
 " Haskell
 Plug 'neovimhaskell/haskell-vim'
-" Plug 'sdiehl/vim-ormolu'
 
 " HTML
 Plug 'alvan/vim-closetag'
@@ -64,10 +57,10 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
+
 " - Svelte
 Plug 'evanleck/vim-svelte'
 Plug 'codechips/coc-svelte', {'do': 'npm install'}
-
 
 " Julia
 Plug 'JuliaEditorSupport/julia-vim'
@@ -75,9 +68,6 @@ Plug 'JuliaEditorSupport/julia-vim'
 " Latex
 Plug 'lervag/vimtex'
 Plug 'xuhdev/vim-latex-live-preview', { 'for': 'tex' }
-
-" Linting
-" Plug 'dense-analysis/ale'
 
 " Markdown
 Plug 'junegunn/vim-journal'
@@ -95,11 +85,8 @@ Plug 'purescript-contrib/purescript-vim'
 
 " Python
 " Plug 'sheerun/vim-polyglot'
-Plug 'wookayin/semshi', { 'do': ':UpdateRemotePlugins' }
 Plug 'vim-scripts/indentpython.vim'
-Plug 'psf/black', { 'tag': '19.10b0' }
 Plug 'Vimjas/vim-python-pep8-indent'
-" Plug 'vim-python/python-syntax'
 
 " PHP
 Plug 'StanAngeloff/php.vim'
@@ -131,11 +118,6 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'diegoulloao/neofusion.nvim'
-Plug 'crispybaccoon/aurora'
-Plug 'maxmx03/solarized.nvim'
-Plug 'cocopon/iceberg.vim'
-Plug 'Badacadabra/vim-archery'
 
 " Tools
 Plug 'evansalter/vim-checklist'
@@ -165,34 +147,14 @@ autocmd BufEnter,BufRead *.agda  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.pug   set shiftwidth=2 tabstop=2
 autocmd BufReadPost      *.rs    setlocal filetype=rust
 
-" Run black on save for Python
-autocmd BufWritePre *.py execute ':Black'
-
 " Enable spell checking for .md files
 autocmd BufNewFile,BufRead *.md setlocal spell
 
 let g:auto_save = 1  " enable AutoSave on Vim startup
 
-" Ale rules
-let g:ale_linters = {
-    \    'python': ['flake8', 'pylint', 'mypy'],
-    \}
-
-let g:ale_fixers = {}
-
-let g:ale_fix_on_save = 1
-let g:ale_completion_enabled = 1
-
 " Coc rules
 let g:coc_start_at_startup = v:false
 " let g:node_client_debug = 1
-let g:coc_global_extensions = [
-  \ 'coc-snippets',
-  \ 'coc-tsserver',
-  \ 'coc-prettier', 
-  \ 'coc-json', 
-  \ 'coc-python',
-  \ ]
 
 " Haskell rules
 let g:haskell_classic_highlighting    = 1
@@ -230,16 +192,10 @@ let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 """"" enable the theme
 syntax enable
 set background=dark
-colorscheme iceberg
+colorscheme tokyonight
 
 " To enable the lightline theme
-let g:lightline = { 'colorscheme': 'iceberg' }
-
-" Semshi / Python
-let g:semshi#filetypes = ['python']
-let g:semshi#error_sign = v:false
-let g:semshi#always_update_all_highlights = v:true
-
+let g:lightline = { 'colorscheme': 'tokyonight' }
 
 " Latex
 " let g:livepreview_previewer = 'open -a Preview'
@@ -250,7 +206,7 @@ let g:vimtex_syntax_conceal_disable = 1
 "
 " Python provider
 let g:python_host_prog = "/home/donna/.pyenv/versions/neovim2/bin/python"
-let g:python3_host_prog = "/home/donna/.pyenv/versions/neovim3.11.5/bin/python"
+let g:python3_host_prog = "/home/donna/.pyenv/versions/3.13.1/bin/python"
 
 let g:python_highlight_all = 1
 
@@ -263,10 +219,6 @@ let g:UltiSnipsSnippetsDir='$HOME/.config/nvim/UltiSnips'
 let g:UltiSnipsSnippetDirectories=['Ultisnips']
 
 let g:mkdp_browser = 'chromium'
-
-command! -nargs=0 Prettier :call CocAction('runCommand', 'prettier.formatFile')
-
-
 
 filetype on
 filetype plugin indent on
