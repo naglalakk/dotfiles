@@ -1,2 +1,4 @@
+general.import = [ "/home/donna/Code/dotfiles/alacritty/themes/tokyo-night.toml" ] 
+
 [font]
 size = 15.0

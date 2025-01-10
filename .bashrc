@@ -12,6 +12,12 @@ PS1='[\u@\h \W]\$ '
 
 # Do it!
 alias vim=nvim
+
+# Attach to the ops session
+# Keeps tmux from creating 
+# new sessions on start
+alias tmux='tmux a -t 0-ops'
+
 # Haskell / ghcup
 # Note: This breaks .xmonad --recompile
 # Comment this out on pacman -Syu (the solution for now :/)
