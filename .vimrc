@@ -13,8 +13,12 @@ set clipboard+=unnamedplus
 
 call plug#begin()
 
+
 " Agda
 Plug 'derekelkins/agda-vim'
+
+" Autocomplete
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autosave
 Plug '907th/vim-auto-save'
@@ -111,7 +115,7 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 " Terraform
 Plug 'hashivim/vim-terraform'
@@ -134,6 +138,14 @@ call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
 
+let mapleader = "," " map leader to comma
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 autocmd BufEnter,BufRead *.md    set filetype=journal
 autocmd BufEnter,BufRead *.vue   set filetype=vue tabstop =2
 autocmd BufEnter,BufRead *.vue   set shiftwidth=2 tabstop=2
@@ -146,9 +158,6 @@ autocmd BufEnter,BufRead *.hs    set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.agda  set shiftwidth=2 tabstop=2
 autocmd BufEnter,BufRead *.pug   set shiftwidth=2 tabstop=2
 autocmd BufReadPost      *.rs    setlocal filetype=rust
-
-" Run black on save for Python
-autocmd BufWritePre *.py execute ':%!black - -q'
 
 " Enable spell checking for .md files
 autocmd BufNewFile,BufRead *.md setlocal spell
@@ -196,6 +205,14 @@ colorscheme tokyonight-night
 " To enable the lightline theme
 let g:lightline = { 'colorscheme': 'tokyonight' }
 
+" Coc
+" Use <CR> to confirm completion
+inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm() : "\<CR>"
+
+" Optional: Use <Tab> to confirm if desired
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
+
+
 " Semshi / Python
 let g:semshi#filetypes = ['python']
 let g:semshi#error_sign = v:false
@@ -211,7 +228,7 @@ let g:vimtex_syntax_conceal_disable = 1
 "
 " Python provider
 let g:python_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/2.7.18/bin/python"
-let g:python3_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/3.9.21/bin/python"
+let g:python3_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/3.13.1/bin/python"
 
 let g:python_highlight_all = 1
 

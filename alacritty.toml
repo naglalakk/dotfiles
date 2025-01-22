@@ -8,3 +8,6 @@ size = 17.0
 
 [env]
 TERM = "xterm-256color"
+
+[window]
+opacity = 0.8
