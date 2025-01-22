@@ -1,0 +1,130 @@
+snippet DataModel
+module Data.$1 where
+
+import Prelude
+import Data.Argonaut (decodeJson, (~>), (:=), (.:), (.:?))
+import Data.Argonaut.Encode (class EncodeJson)
+import Data.Argonaut.Decode (class DecodeJson)
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
+import Data.Maybe (Maybe)
+import Data.Newtype (class Newtype)
+
+newtype $1Id = $1Id Int
+
+derive instance newtype$1Id :: Newtype $1Id _
+derive instance generic$1Id :: Generic $1Id _
+derive instance eq$1Id :: Eq $1Id
+derive instance ord$1Id :: Ord $1Id
+
+derive newtype instance encodeJson$1Id :: EncodeJson $1Id
+derive newtype instance decodeJson$1Id :: DecodeJson $1Id
+
+instance show$1Id :: Show $1Id where
+  show = genericShow
+
+newtype $1 = $1
+  { id :: $1Id
+  }
+
+derive instance newtype$1 :: Newtype $1 _
+derive instance generic$1 :: Generic $1 _
+derive instance eq$1 :: Eq $1
+derive instance ord$1 :: Ord $1
+
+derive newtype instance encodeJson$1 :: EncodeJson $1
+derive newtype instance decodeJson$1 :: DecodeJson $1
+
+instance show$1 :: Show $1 where
+  show = genericShow
+endsnippet
+
+snippet Resource
+module Resource.$1 where
+
+import Prelude
+import Data.Maybe           (Maybe)
+import Halogen              (HalogenM, lift)
+
+import Data.$1              ($1, $1Id)
+
+class Monad m <= Manage$1 m where
+  all$1s :: m (Array $1)
+  get$1  :: $1Id -> m (Maybe $1)
+  create$1 :: $1 -> m (Maybe $1)
+  update$1 :: $1 -> m (Maybe $1)
+  delete$1 :: $1Id -> m Unit
+
+instance manage$1HalogenM :: Manage$1 m => Manage$1 (HalogenM st act slots msg m) where
+  all$1s = lift all$1s
+  get$1 = lift <<< get$1
+  create$1 = lift <<< create$1
+  update$1 = lift <<< update$1
+  delete$1 = lift <<< delete$1
+endsnippet
+
+snippet manageEndpoint
+instance manage$1AppM :: Manage$1 AppM where
+  all$1s 
+    = genericListRequest
+        API.$1s
+        Get
+        (Just apiAuth)
+
+  {-- uncomment to use search
+  search$1s query
+    = genericRequest
+        (API.$1Search query)
+        Get
+        (Just apiAuth) 
+  --}
+
+  get$1 id
+    = genericRequest
+        (API.$1 id)
+        Get
+        (Just apiAuth)
+
+  create$1 val
+    = genericRequest
+        API.$1s
+        (Post $ Just $ encodeJson val)
+        (Just apiAuth)
+
+  update$1 ($1 val)
+    = genericRequest
+        (API.$1Update val.id)
+        (Post $ Just $ encodeJson $ $1 val)
+        (Just apiAuth)
+
+  delete$1 id_ = do
+    req <- mkRequest
+      { endpoint: API.$1Delete id_
+      , method: Delete
+      , auth: Just apiAuth
+      }
+    pure unit
+endsnippet
+
+snippet ApiEndpoints
+  | $1s
+  -- | $1Search NameQuery
+  | $1 $1Id
+  | $1Update $1Id
+  | $1Delete $1Id
+endsnippet
+
+snippet ApiCodecs
+  , "$1s" : "`!p snip.rv=t[1].lower()`s" / noArgs
+  {--, "$1Search" : "`!p snip.rv=t[1].lower()`s" / "search" ? 
+    { name: optional <<< string
+    }--}
+  , "$1" : "`!p snip.rv=t[1].lower()`s" / `!p snip.rv=t[1].lower()`Id
+  , "$1Update" : "`!p snip.rv=t[1].lower()`s" / `!p snip.rv=t[1].lower()`Id / "update"
+  , "$1Delete" : "`!p snip.rv=t[1].lower()`s" / `!p snip.rv=t[1].lower()`Id / "delete"
+endsnippet
+
+snippet RouteId
+$1Id:: RouteDuplex' $2Id
+$1Id = _Newtype (int segment)
+endsnippet

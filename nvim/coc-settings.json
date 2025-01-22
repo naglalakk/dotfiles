@@ -1,0 +1,8 @@
+{
+  "python.pythonPath": "/home/donna/.pyenv/versions/3.13.1/bin/python",
+  "python.linting.enabled": true,
+  "python.formatting.provider": "black",
+  "python.analysis.typeCheckingMode": "basic",
+  "python.envFile": "${workspaceFolder}/.env"
+  "coc.preferences.formatOnSaveFiletypes": ["python"]
+}
