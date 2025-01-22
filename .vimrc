@@ -111,7 +111,7 @@ Plug 'Shougo/neosnippet-snippets'
 
 " Telescope
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.0' }
+Plug 'nvim-telescope/telescope.nvim', { 'tag': '0.1.8' }
 
 " Terraform
 Plug 'hashivim/vim-terraform'
@@ -133,6 +133,15 @@ Plug 'tidalcycles/vim-tidal'
 call plug#end()
 
 map <C-n> :NERDTreeToggle<CR>
+
+let mapleader = "," " map leader to comma
+
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
 
 autocmd BufEnter,BufRead *.md    set filetype=journal
 autocmd BufEnter,BufRead *.vue   set filetype=vue tabstop =2
