@@ -5,7 +5,7 @@
 vim.g.auto_save = 1
 
 -- Coc
-vim.g.coc_start_at_startup = false
+-- vim.g.coc_start_at_startup = false
 -- let g:node_client_debug = 1  -- If you need debugging
 
 -- Haskell
