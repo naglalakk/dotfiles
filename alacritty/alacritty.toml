@@ -1,11 +1,11 @@
-general.import = [ "/home/donna/Code/dotfiles/alacritty/themes/tokyo-night.toml" ] 
+general.import = [ "/Users/donnahermannsdottir/Code/dotfiles/alacritty/themes/tokyo-night.toml" ] 
 
 [font]
-normal.family = "Source Code Pro"
-bold.family = "Source Code Pro"
-italic.family = "Source Code Pro"
-bold_italic.family = "Source Code Pro"
-size = 17.0
+normal.family = "Hack"
+bold.family = "Hack"
+italic.family = "Hack"
+bold_italic.family = "Hack"
+size = 20.0
 
 [env]
 TERM = "xterm-256color"

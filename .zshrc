@@ -21,4 +21,4 @@ function sso (){
   $(aws-export-credentials --profile $AWS_PROFILE --credentials-file-profile $AWS_PROFILE)
 }
 
-eval "$(direnv hook zsh)"
+alias ls="ls --color=auto"
