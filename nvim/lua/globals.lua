@@ -42,10 +42,9 @@ vim.g.vimtex_syntax_conceal_disable = 1
 ----------------------
 --  Python Provider --
 ----------------------
-vim.g.python_host_prog  = "/home/donna/.pyenv/versions/neovim2/bin/python"
-vim.g.python3_host_prog = "/home/donna/.pyenv/versions/3.13.1/bin/python"
+vim.g.python_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/2.7.18/bin/python"
+vim.g.python3_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/3.13.1/bin/python"
 vim.g.python_highlight_all = 1
-
 
 ---------------------------------
 --   UltiSnips (if you use it)  --

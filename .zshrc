@@ -1,5 +1,7 @@
 alias vim=nvim
 
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
 export PATH=/opt/homebrew/bin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/local/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/bin:/var/run/com.apple.security.cryptexd/codex.system/bootstrap/usr/appleinternal/bin
 
 export NVM_DIR="$HOME/.nvm"
@@ -11,7 +13,6 @@ export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init - zsh)"
 
-export PATH="$HOME/.local/bin:$PATH"
 
 ## AWS sso login helpers ##
 export AWS_REGION=eu-west-1
@@ -21,4 +22,7 @@ function sso (){
   $(aws-export-credentials --profile $AWS_PROFILE --credentials-file-profile $AWS_PROFILE)
 }
 
+eval "$(direnv hook zsh)"
+
 alias ls="ls --color=auto"
+

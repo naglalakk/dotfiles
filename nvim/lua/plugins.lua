@@ -1,15 +1,11 @@
 ----------------------------------
 --  Plugin Manager (vim-plug)   --
 ----------------------------------
--- If you want to keep using vim-plug, just embed the same call:
 vim.cmd([[
 call plug#begin()
 
 " Agda
 Plug 'derekelkins/agda-vim'
-
-" Autocomplete
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Autosave
 Plug '907th/vim-auto-save'
@@ -28,7 +24,6 @@ Plug 'vmchale/dhall-vim'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 
 " Format
-Plug 'sbdchd/neoformat'
 Plug 'junegunn/vim-easy-align'
 Plug 'ervandew/supertab'
 Plug 'Yggdroot/indentLine'
@@ -47,6 +42,20 @@ Plug 'Shougo/vimproc.vim', {'do': 'make'}
 " Javascript
 Plug 'pangloss/vim-javascript'
 Plug 'heavenshell/vim-jsdoc'
+
+" Language servers
+" LSP Configuration
+Plug 'neovim/nvim-lspconfig'           " LSP configuration
+Plug 'williamboman/mason.nvim'         " LSP server installer
+Plug 'williamboman/mason-lspconfig.nvim' " Bridge between Mason and lspconfig
+Plug 'WhoIsSethDaniel/mason-tool-installer.nvim'
+Plug 'stevearc/conform.nvim' " Conform for other stuff
+
+" Minimal Autocompletion
+Plug 'hrsh7th/nvim-cmp'                " Completion engine
+Plug 'hrsh7th/cmp-nvim-lsp'            " LSP source for nvim-cmp
+Plug 'nvimtools/none-ls.nvim'
+Plug 'jay-babu/mason-null-ls.nvim'
 
 " Svelte
 Plug 'evanleck/vim-svelte'
@@ -106,6 +115,7 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'morhetz/gruvbox'
 
 " Tools
 Plug 'evansalter/vim-checklist'

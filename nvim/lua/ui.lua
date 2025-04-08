@@ -28,6 +28,56 @@ require'nvim-treesitter.configs'.setup {
   },
 }
 
+vim.cmd([[
+function! MyTabLabel(n)
+  let buflist = tabpagebuflist(a:n)
+  let winnr = tabpagewinnr(a:n)
+  let filename = bufname(buflist[winnr - 1])
+  
+  " If no filename, return [No Name]
+  if filename == ''
+    return '[No Name]'
+  endif
+  
+  " Get relative path (or full path if needed)
+  let filepath = fnamemodify(filename, ':~:.')
+  
+  " If path is too long, show only last two components (folder/file.py)
+  let parts = split(filepath, '/')
+  if len(parts) > 2
+    return join(parts[-2:], '/')
+  else
+    return filepath
+  endif
+endfunction
+
+function! MyTabLine()
+  let s = ''
+  for i in range(tabpagenr('$'))
+    " Select the highlighting
+    if i + 1 == tabpagenr()
+      let s .= '%#TabLineSel#'
+    else
+      let s .= '%#TabLine#'
+    endif
+
+    " Set the tab page number (for mouse clicks)
+    let s .= '%' . (i + 1) . 'T'
+
+    " The label is made by MyTabLabel()
+    let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
+  endfor
+
+  " After the last tab fill with TabLineFill and reset tab page nr
+  let s .= '%#TabLineFill#%T'
+
+  return s
+endfunction
+
+set tabline=%!MyTabLine()
+]])
+
+vim.g.gruvbox_contrast_dark = "hard"
 -- Set colorscheme
 vim.cmd("colorscheme tokyonight")
 
