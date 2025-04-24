@@ -2,7 +2,7 @@
 --  Basic Settings --
 ---------------------
 -- In Lua, we can still run Vim commands directly:
-vim.cmd("syntax on")  -- or 'syntax enable'
+vim.cmd("syntax on") -- or 'syntax enable'
 -- Options
 vim.opt.number = true
 vim.opt.softtabstop = 4
@@ -29,21 +29,28 @@ local function setIndent2()
 end
 
 -- For Markdown: set filetype=journal & enable spell
-vim.api.nvim_create_autocmd({"BufEnter","BufRead"}, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
   pattern = "*.md",
   callback = function()
     vim.opt_local.filetype = "journal"
     vim.opt_local.spell = true
-  end
+  end,
 })
 
 -- For certain filetypes, shiftwidth=2 & tabstop=2
-vim.api.nvim_create_autocmd({"BufEnter","BufRead"}, {
+vim.api.nvim_create_autocmd({ "BufEnter", "BufRead" }, {
   pattern = {
-    "*.vue", "*.js", "*.ts", "*.scss",
-    "*.styl", "*.purs", "*.hs", "*.agda", "*.pug"
+    "*.vue",
+    "*.js",
+    "*.ts",
+    "*.scss",
+    "*.styl",
+    "*.purs",
+    "*.hs",
+    "*.agda",
+    "*.pug",
   },
-  callback = setIndent2
+  callback = setIndent2,
 })
 
 -- For Rust: set filetype=rust on BufReadPost
@@ -51,5 +58,5 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   pattern = "*.rs",
   callback = function()
     vim.opt_local.filetype = "rust"
-  end
+  end,
 })

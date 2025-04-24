@@ -115,7 +115,6 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
-Plug 'morhetz/gruvbox'
 
 " Tools
 Plug 'evansalter/vim-checklist'
