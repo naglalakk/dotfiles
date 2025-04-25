@@ -1,4 +1,4 @@
--- Auto-start obsession and load session only if no files were specified
+-- Auto-start obsession
 vim.api.nvim_create_augroup("ObsessionAutoStart", { clear = true })
 vim.api.nvim_create_autocmd("VimEnter", {
   group = "ObsessionAutoStart",
