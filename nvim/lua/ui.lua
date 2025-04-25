@@ -5,9 +5,17 @@
 -- (We've already done it above; or do it in your shell)
 -- vim.env.NVIM_TUI_ENABLE_TRUE_COLOR = 1
 --
-require'nvim-treesitter.configs'.setup {
+require("nvim-treesitter.configs").setup({
   -- A list of parser names, or "all" (the listed parsers MUST always be installed)
-  ensure_installed = { "c", "lua", "vim", "vimdoc", "query", "markdown", "markdown_inline" },
+  ensure_installed = {
+    "c",
+    "lua",
+    "vim",
+    "vimdoc",
+    "query",
+    "markdown",
+    "markdown_inline",
+  },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -26,7 +34,7 @@ require'nvim-treesitter.configs'.setup {
     enable = true,
     additional_vim_regex_highlighting = false,
   },
-}
+})
 
 vim.cmd([[
 function! MyTabLabel(n)
@@ -77,7 +85,6 @@ endfunction
 set tabline=%!MyTabLine()
 ]])
 
-vim.g.gruvbox_contrast_dark = "hard"
 -- Set colorscheme
 vim.cmd("colorscheme tokyonight")
 
