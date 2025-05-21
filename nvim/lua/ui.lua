@@ -47,16 +47,17 @@ function! MyTabLabel(n)
     return '[No Name]'
   endif
   
-  " Get relative path (or full path if needed)
-  let filepath = fnamemodify(filename, ':~:.')
+  " Get the full file path
+  let filepath = fnamemodify(filename, ':p')
   
-  " If path is too long, show only last two components (folder/file.py)
-  let parts = split(filepath, '/')
-  if len(parts) > 2
-    return join(parts[-2:], '/')
-  else
-    return filepath
-  endif
+  " Extract just the filename
+  let tail = fnamemodify(filepath, ':t')
+  
+  " Extract the parent directory name
+  let parent = fnamemodify(filepath, ':h:t')
+  
+  " Return parent/filename format
+  return parent . '/' . tail
 endfunction
 
 function! MyTabLine()
@@ -68,20 +69,15 @@ function! MyTabLine()
     else
       let s .= '%#TabLine#'
     endif
-
     " Set the tab page number (for mouse clicks)
     let s .= '%' . (i + 1) . 'T'
-
     " The label is made by MyTabLabel()
     let s .= ' %{MyTabLabel(' . (i + 1) . ')} '
   endfor
-
   " After the last tab fill with TabLineFill and reset tab page nr
   let s .= '%#TabLineFill#%T'
-
   return s
 endfunction
-
 set tabline=%!MyTabLine()
 ]])
 

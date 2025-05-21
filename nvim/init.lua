@@ -1,7 +1,7 @@
 require("general")
 require("globals")
-require("mapping")
 require("plugins")
+require("mapping")
 require("session")
 require("lsp")
 require("ui")
