@@ -28,3 +28,5 @@ alias ls="ls --color=auto"
 
 # Rust
 export PATH="$HOME/.cargo/bin:$PATH"
+
+[ -f "/Users/donnahermannsdottir/.ghcup/env" ] && . "/Users/donnahermannsdottir/.ghcup/env" # ghcup-env

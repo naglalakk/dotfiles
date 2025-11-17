@@ -116,6 +116,11 @@ Plug 'hashivim/vim-terraform'
 
 " Themes
 Plug 'folke/tokyonight.nvim', { 'branch': 'main' }
+Plug 'egerhether/heatherfield.nvim'
+Plug 'hallzy/lightline-onedark'
+
+" Tmux
+Plug 'edkolev/tmuxline.vim'
 
 " Tools
 Plug 'evansalter/vim-checklist'

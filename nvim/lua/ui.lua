@@ -81,8 +81,22 @@ endfunction
 set tabline=%!MyTabLine()
 ]])
 
+-- Make background transparent
+require("tokyonight").setup({
+  transparent = true,
+  terminal_colors = true,
+  styles = {
+    comments = { italic = true },
+    keywords = { italic = true },
+    sidebars = "transparent",
+    floats = "transparent",
+  },
+})
+
+vim.o.background = "dark"
+
 -- Set colorscheme
 vim.cmd("colorscheme tokyonight")
 
 -- Lightline theme
-vim.g.lightline = { colorscheme = "tokyonight" }
+vim.g.lightline = { colorscheme = "wombat" }

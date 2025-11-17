@@ -1,14 +1,25 @@
 general.import = [ "/Users/donnahermannsdottir/Code/dotfiles/alacritty/themes/tokyo-night.toml" ] 
 
 [font]
-normal.family = "Hack"
-bold.family = "Hack"
-italic.family = "Hack"
-bold_italic.family = "Hack"
+normal.family = "Hack Nerd Font"
+bold.family = "Hack Nerd Font"
+italic.family = "Hack Nerd Font"
+bold_italic.family = "Hack Nerd Font"
 size = 20.0
 
 [env]
 TERM = "xterm-256color"
 
 [window]
-opacity = 0.8
+opacity = 0.9
+decorations = "None"
+startup_mode = "SimpleFullscreen"
+
+[window.padding]
+x = 8
+y = 28
+
+[[keyboard.bindings]]
+key = "M"
+mods = "Command"
+action = "ToggleSimpleFullscreen"
