@@ -4,10 +4,6 @@
 -- AutoSave
 vim.g.auto_save = 1
 
--- Coc
--- vim.g.coc_start_at_startup = false
--- let g:node_client_debug = 1  -- If you need debugging
-
 -- Haskell
 vim.g.haskell_classic_highlighting    = 1
 vim.g.haskell_indent_if               = 2
@@ -30,21 +26,12 @@ vim.g.purescript_indent_where = 2
 vim.g.purescript_indent_do    = 2
 vim.g.purescript_indent_in    = 2
 
----------------------
---   LaTeX Setup   --
----------------------
-vim.g.tex_conceal = ""
-vim.g.vimtex_syntax_conceal_disable = 1
--- Example live preview config:
--- let g:livepreview_previewer = 'open -a Preview'
-
-
 ----------------------
 --  Python Provider --
 ----------------------
-vim.g.python_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/2.7.18/bin/python"
-vim.g.python3_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/3.13.1/bin/python"
-vim.g.python_highlight_all = 1
+-- vim.g.python_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/2.7.18/bin/python"
+-- vim.g.python3_host_prog = "/Users/donnahermannsdottir/.pyenv/versions/3.13.1/bin/python"
+-- vim.g.python_highlight_all = 1
 
 ---------------------------------
 --   UltiSnips (if you use it)  --

@@ -1,4 +1,4 @@
 dotfiles
 ===========
 
-dotfiles for OSX setup
+dotfiles - remote dev server setup.

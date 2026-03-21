@@ -1,4 +1,4 @@
-general.import = [ "/Users/donnahermannsdottir/Code/dotfiles/alacritty/themes/tokyo-night.toml" ] 
+general.import = [ "/Users/donnahermannsdottir/Code/dotfiles/alacritty/themes/aquarius.toml" ] 
 
 [font]
 normal.family = "Hack Nerd Font"
