@@ -60,3 +60,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     vim.opt_local.filetype = "rust"
   end,
 })
+
+-- Runtime
+vim.opt.runtimepath:append("/home/donna/.local/share/nvim/site")
+

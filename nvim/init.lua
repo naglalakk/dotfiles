@@ -1,6 +1,8 @@
 require("general")
 require("globals")
 require("plugins")
+require("syntax")
 require("mapping")
 require("session")
+require("lsp")
 require("ui")
